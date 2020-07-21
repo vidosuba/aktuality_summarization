@@ -611,7 +611,7 @@ def DownloadMapper(t):
 
   return url, DownloadUrl(url, corpus)
 
-def DownloadUrl(url, corpus, max_attempts=5, timeout=5):
+def DownloadUrl(url, corpus, dataset, max_attempts=5, timeout=5):
   """Downloads a URL.
 
   Args:
@@ -637,7 +637,7 @@ def DownloadUrl(url, corpus, max_attempts=5, timeout=5):
       req = requests.get(url, allow_redirects=False, timeout=timeout)
       if req.status_code == requests.codes.ok:
         content = req.text.encode(req.encoding)
-        with open('%s/downloads/%s.html' % (corpus, Hashhex(url)), 'w') as f:
+        with open('%s/downloads/%s/%s.html' % (corpus, dataset, Hashhex(url)), 'w') as f:
           f.write(content)
         return content
       elif (req.status_code in [301, 302, 404, 503]
@@ -696,7 +696,7 @@ def DownloadMode(corpus, request_parallelism):
     try:
       #for url, story_html in results:
       for url in urls:
-        story_html = DownloadUrl(url, corpus)
+        story_html = DownloadUrl(url, corpus, dataset)
         if story_html:
           collected_urls.append(url)
         
