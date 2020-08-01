@@ -625,7 +625,7 @@ def DownloadUrl(url, corpus, dataset, max_attempts=5, timeout=5):
   """
 
   try:
-    with open('%s/downloads/%s.html' % (corpus, Hashhex(url))) as f:
+    with open('%s/downloads/%s/%s.html' % (corpus, dataset, Hashhex(url))) as f:
       return f.read()
   except IOError:
     pass
