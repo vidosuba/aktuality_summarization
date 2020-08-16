@@ -162,11 +162,11 @@ def make_summs(dataset):
 
 def main():
 	
-	# for dataset in datasets:
-	# 	parse_dataset(dataset)
-
 	for dataset in datasets:
-		make_summs(dataset)
+		parse_dataset(dataset)
+
+	#for dataset in datasets:
+		#make_summs(dataset)
 
 
 main()
