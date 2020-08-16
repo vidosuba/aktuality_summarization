@@ -28,8 +28,8 @@ def stem(word, aggressive=False):
         return word
 
     if not word.islower() and not word.istitle() and not word.isupper():
-        print("warning: skipping word with mixed case: {}".format(word),
-              file=sys.stderr)
+        #print("warning: skipping word with mixed case: {}".format(word),
+              #file=sys.stderr)
         return word
 
     # all our pattern matching is done in lowercase
